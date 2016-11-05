@@ -4,23 +4,47 @@ import java.nio.*;
 
 public class Couche2 {
    
-    private byte[] addresseSource;
-    private byte[] addresseDest;
+    protected byte[] macSource;
+    protected byte[] macDest;
     private byte[] protoSup;
-    private byte[] coucheSup;
+    private byte[] payload;
 
-    public Couche2(byte[] paquet){ 
+    public Couche2(){
+        //Dans le cas de l'ARP
+    }
+
+    public Couche2(byte[] paquet, int taille){ 
      
-        this.addresseDest = new byte[6];
-        this.addresseDest = this.data(paquet,0,6);
-        //this.addresseSource = this.data(paquet,6,6);
-        //this.protoSup = this.data(paquet,12,2);
-
+        this.macDest = this.data(paquet,0,6);
+        this.macSource = this.data(paquet,6,6);
+        this.protoSup = this.data(paquet,12,2);
+        this.payload = this.data(paquet,14, taille -14);
     }
     
     public void Informations(){
+        System.out.println("--> Couche 2:");
         System.out.print("Adresse de destination = ");
-        System.out.println(AdresseHexa(addresseDest));
+        System.out.println(AdresseHexa(macDest));
+
+        System.out.print("Adresse Source = ");
+        System.out.println(AdresseHexa(macSource));
+
+        System.out.print("Protocole suivant: ");
+
+        if( protocoleSup().equals( "IPv4" ) ){
+            System.out.println("IPv4");
+            System.out.println("Il existe un paquet de niveau 3:");
+            //On cree une couche supplémentaire et on lui envoie la payload du niveau 2 :-)
+        }
+        else if( protocoleSup().equals( "ARP" ) ){
+            System.out.println("ARP");
+            System.out.println("Pas de niveau 3! Analyse du protocole:");
+            //On analyse l'ARP.
+            ARP arp = new ARP(this.payload);
+            arp.Informations();
+        }
+        
+        
     }
 
     public String toString(){
@@ -35,16 +59,27 @@ public class Couche2 {
             if( i == donnee.length-1)
                 data += String.format("%02X", donnee[i]);
             else
-                data += String.format("%02X", donnee[i]);
+                data += String.format("%02X:", donnee[i]);
         }
         return data;
+    }
+
+    public String protocoleSup(){
+        String result="";
+        if(this.protoSup[0] == 0x08 && this.protoSup[1] == 0x00)
+            result = "IPv4";
+        else if(this.protoSup[0] == 0x08 && this.protoSup[1] == 0x06 )
+            result = "ARP";
+        else
+            result = "None";
+        return result;
     }
 
     public byte[] data(byte[] donnee, int offset, int length){
         byte[] tab = null;
         tab = new byte[length];
         for(int i=0; i < length; i++){
-            System.out.println(donnee.length);
+            //System.out.println(donnee.length);
             tab[i] = donnee[offset+i];
         }
         return tab;

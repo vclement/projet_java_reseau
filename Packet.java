@@ -5,12 +5,15 @@ import java.util.*;
 
 
 public class Packet{
+
+    private byte[] donnee;
     private Couche2 couche2;
     private int taillePacket;
 
-    public Packet(){
-        this.couche2 = null;
-        this.taillePacket = 0;
+    public Packet(byte[] donnee, int taille){
+        this.donnee = donnee;
+        this.couche2 = new Couche2( data( donnee, 0, taille ) );
+        this.taillePacket = taille;
     }
     
     public byte[] data(byte[] donnee, int offset, int length){

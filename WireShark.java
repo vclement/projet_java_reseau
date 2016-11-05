@@ -9,73 +9,60 @@ import java.util.ListIterator;
 class WireShark {
     public static void main( String[] args) throws IOException {
         byte[] donnee = Files.readAllBytes(Paths.get(args[0]));
-        StringBuilder magicNumber = new StringBuilder();
         int offset=0, next_offset = 0, i=0, verif_i=0;
 
+
+        byte[] magicnumber = data(donnee,offset, offset+24);
+        System.out.println("\nPremière information sur le paquet:");
         System.out.print("Magic Number: ");
-        System.out.println(MagicNumber(data(donnee,offset,offset+24)));
+        System.out.println(MagicNumber(magicnumber));
         if((HexaToString(donnee[0]) + HexaToString(donnee[1]) + HexaToString(donnee[2]) + HexaToString(donnee[3])).equals("d4c3b2a1"))
             System.out.println("Big-Endian: OK !");
         else{
             System.out.println("Fichier illisible, fin du programme");
             System.exit(1);
         }
+
+        if(magicnumber[20] == (byte)0x01)
+            System.out.println("Protocole : Ethernet");
+        else{
+            System.out.println("Protocole de niveau 2 inconnu.\n Fin du programme.");
+            System.exit(1);
+        }
+
         offset=24;
-
-        //System.out.println( data(donnee, 0, 4));
+        System.out.println( "\nDébut de l'analyse de l'ensemble des paquets...\n" );
+        
         while(offset < donnee.length){
+            //On commence par recuperer le header generer par WireShark. Et on le stock dans un objet de type Header Pcap.
+            PcapHeader pcapheader = new PcapHeader(data(donnee, offset, 16));
+            pcapheader.Informations();
 
-            //On commence par recuperer le header generer par WireShark.
-            byte[] packetHeader = PcapHeader(donnee, offset);
-            //System.out.println(affiche_hexa(packetHeader));
-            
-            byte[] taillepacket = data(packetHeader, 8, 4);
-
-            i = taillePacketInt(taillepacket);
-            //i =  taillePacketInt(taillepacket);
+            i = taillePacketInt( pcapheader.getIncl_len() );
             //verif_i = packetHeader[12] + packetHeader[13] + packetHeader[14] + packetHeader[15];  
-            verif_i = i;
+            verif_i = taillePacketInt( pcapheader.getOrig_len() );
+            
+            //Next offset
+            next_offset = i;
+            offset += 16;
+
+            //La on cree le paquet reseau
+            byte[] payloadPacket = data(donnee,offset, i);
+
+
             if(i == verif_i){
-                System.out.print("Taille du Paquet = "+ i + " valeur de verification: " + verif_i + "  hexa de i: ");
-                System.out.println(String.format(" %02X %02X %02X %02X", packetHeader[8], packetHeader[9], packetHeader[10], packetHeader[11]));
+                Couche2 couche2 = new Couche2( payloadPacket, i );
+                couche2.Informations();
             }
             else{
-                System.out.println("error!!");
+                System.out.println("Paquet incomplet, paquet non analysé !");
                 System.out.println(i);
                 System.out.println(verif_i);
                 System.exit(1);
             } 
 
-            //Next offset
-            next_offset = i;
-            offset += 16;
-            byte[] payloadPacket = data(donnee,offset, i);
-            
-            for(int j=0; j<payloadPacket.length; j++){
-                System.out.print(String.format("%02x ",payloadPacket[j]));
-            }
-            System.out.println("");
-            Couche2 couche2 = new Couche2( payloadPacket );
-            
-            // System.out.println( String.format("%02X",donnee[next_offset]));
-
-            System.out.print("addresse destination: ");
-            affiche_adresse(affiche_hexa(data(donnee,offset,6)));
-            
-            couche2.Informations();
-
-            System.out.print("Addresse source: ");
-            affiche_adresse(affiche_hexa(data(donnee,offset+6,6)));
-
-            System.out.print("Protocole de couche superieur: ");
-            if(donnee[offset+12]==(byte)0x08 && donnee[offset+13]==(byte)0x00)
-                System.out.println("IPV4\n");
-            else if(donnee[offset+12]==(byte)0x08 && donnee[offset+13]==(byte)0x06)
-                System.out.println("ARP\n");
-            else
-                System.out.println("Protocole de couche superieur inconnu\n");
-
             offset += next_offset;
+            System.out.println("---------------------------------------------------------------------------");
         }
     }
 
