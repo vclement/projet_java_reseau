@@ -14,15 +14,25 @@ class WireShark {
 
         System.out.print("Magic Number: ");
         System.out.println(MagicNumber(data(donnee,offset,offset+24)));
+        if((HexaToString(donnee[0]) + HexaToString(donnee[1]) + HexaToString(donnee[2]) + HexaToString(donnee[3])).equals("d4c3b2a1"))
+            System.out.println("Big-Endian: OK !");
+        else{
+            System.out.println("Fichier illisible, fin du programme");
+            System.exit(1);
+        }
         offset=24;
 
         //System.out.println( data(donnee, 0, 4));
         while(offset < donnee.length){
 
+            //On commence par recuperer le header generer par WireShark.
             byte[] packetHeader = PcapHeader(donnee, offset);
             //System.out.println(affiche_hexa(packetHeader));
+            
             byte[] taillepacket = data(packetHeader, 8, 4);
+
             i = taillePacketInt(taillepacket);
+            //i =  taillePacketInt(taillepacket);
             //verif_i = packetHeader[12] + packetHeader[13] + packetHeader[14] + packetHeader[15];  
             verif_i = i;
             if(i == verif_i){
@@ -39,11 +49,20 @@ class WireShark {
             //Next offset
             next_offset = i;
             offset += 16;
-
+            byte[] payloadPacket = data(donnee,offset, i);
+            
+            for(int j=0; j<payloadPacket.length; j++){
+                System.out.print(String.format("%02x ",payloadPacket[j]));
+            }
+            System.out.println("");
+            Couche2 couche2 = new Couche2( payloadPacket );
+            
             // System.out.println( String.format("%02X",donnee[next_offset]));
 
             System.out.print("addresse destination: ");
             affiche_adresse(affiche_hexa(data(donnee,offset,6)));
+            
+            couche2.Informations();
 
             System.out.print("Addresse source: ");
             affiche_adresse(affiche_hexa(data(donnee,offset+6,6)));
@@ -78,6 +97,12 @@ class WireShark {
         return magicNumber;
     }
 
+    public static String HexaToString(byte donnee){
+        String data = "";
+        return String.format("%02x",donnee);
+
+    }
+
     public static String affiche_hexa(byte[] donnee){
         String data="";
         for(int i=0; i< donnee.length ; i++){
@@ -106,10 +131,10 @@ class WireShark {
     }
 
     public static int taillePacketInt(byte[] donnee){
-        hexa = String.format("%02x",packetHeader[8]);
+        //hexa = String.format("%02x",donnee[8]);
         String intFinale = "";
         StringBuilder dataTemp = new StringBuilder();
-        for(int i=0; i < longueur; i++){
+        for(int i=donnee.length-1 ; i >= 0; i--){
             dataTemp.append(String.format("%02X", donnee[i]));
         }
         intFinale = dataTemp.toString();
