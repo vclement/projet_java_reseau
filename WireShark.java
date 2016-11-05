@@ -1,4 +1,5 @@
 import java.io.*;
+import java.lang.Number;
 import java.nio.file.*;
 import java.util.LinkedList;
 import java.util.List;
@@ -17,24 +18,28 @@ class WireShark {
 
         //System.out.println( data(donnee, 0, 4));
         while(offset < donnee.length){
-            
+
             byte[] packetHeader = PcapHeader(donnee, offset);
             //System.out.println(affiche_hexa(packetHeader));
-            i = packetHeader[8] + packetHeader[9] + packetHeader[10] + packetHeader[11];
-            verif_i = packetHeader[12] + packetHeader[13] + packetHeader[14] + packetHeader[15];  
-            if(i == verif_i)
-                System.out.println("Taille du Paquet = "+ i);
+            byte[] taillepacket = data(packetHeader, 8, 4);
+            i = taillePacketInt(taillepacket);
+            //verif_i = packetHeader[12] + packetHeader[13] + packetHeader[14] + packetHeader[15];  
+            verif_i = i;
+            if(i == verif_i){
+                System.out.print("Taille du Paquet = "+ i + " valeur de verification: " + verif_i + "  hexa de i: ");
+                System.out.println(String.format(" %02X %02X %02X %02X", packetHeader[8], packetHeader[9], packetHeader[10], packetHeader[11]));
+            }
             else{
                 System.out.println("error!!");
                 System.out.println(i);
                 System.out.println(verif_i);
                 System.exit(1);
             } 
-                
+
             //Next offset
             next_offset = i;
-            offset+=16;
-            
+            offset += 16;
+
             // System.out.println( String.format("%02X",donnee[next_offset]));
 
             System.out.print("addresse destination: ");
@@ -48,6 +53,8 @@ class WireShark {
                 System.out.println("IPV4\n");
             else if(donnee[offset+12]==(byte)0x08 && donnee[offset+13]==(byte)0x06)
                 System.out.println("ARP\n");
+            else
+                System.out.println("Protocole de couche superieur inconnu\n");
 
             offset += next_offset;
         }
@@ -96,5 +103,18 @@ class WireShark {
         byte[] header = null;
         header = data(donnee, offset, 16);
         return header;
+    }
+
+    public static int taillePacketInt(byte[] donnee){
+        hexa = String.format("%02x",packetHeader[8]);
+        String intFinale = "";
+        StringBuilder dataTemp = new StringBuilder();
+        for(int i=0; i < longueur; i++){
+            dataTemp.append(String.format("%02X", donnee[i]));
+        }
+        intFinale = dataTemp.toString();
+
+        return Integer.parseInt(intFinale, 16);
+
     }
 }
