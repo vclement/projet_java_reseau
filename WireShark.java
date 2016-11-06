@@ -24,7 +24,7 @@ class WireShark {
         }
 
         if(magicnumber[20] == (byte)0x01)
-            System.out.println("Protocole : Ethernet");
+            System.out.println("Protocole : Ethernet II");
         else{
             System.out.println("Protocole de niveau 2 inconnu.\n Fin du programme.");
             System.exit(1);

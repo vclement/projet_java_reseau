@@ -10,24 +10,22 @@ public class Couche3{
     private byte protocole;
     private byte[] ipSource;
     private byte[] ipDest;
+    private byte[] payload3;
 
-
-    public Couche3(byte[] payload2){
-        if(data(payload2, 0, 1)[0] == (byte)0x45)
-            this.version = 1;
-        else
-            this.version =0;
+    public Couche3(byte[] payload2, int taille){
+        this.version = data(payload2, 0, 1)[0] == (byte)0x45 ? 1 : 0;
         this.length = data(payload2, 2, 2);
         this.ttl = data(payload2, 8,1)[0];
         this.protocole = data(payload2, 9, 1)[0];
         this.ipSource = data(payload2, 12, 4);
         this.ipDest = data(payload2, 14, 4);
-    }
+        this.payload3 = data(payload2,20, taille-20);
+    } 
 
     public void Informations(){
         System.out.println("\n--> Couche3:");
         if(version==1){
-            System.out.println("\tVersion: 4") ;
+            System.out.println("\tVersion: IPv4") ;
             System.out.println("\tTotal length: "+ HexaToInt(length) );
             System.out.println("\tTime to live: "+ Integer.parseInt( (String.format("%02X",ttl) ), 16 ) );
             System.out.println("\tSource: "+AdresseIP(ipSource));
@@ -43,7 +41,9 @@ public class Couche3{
             }
             else if(protocole == (byte)0x01){
                 //On cree un pbjet spécifique a ICMP !
-                System.out.println("\tProtocole nieveau 4: ICMP");
+                System.out.println("\tProtocole suivant: ICMP");
+                ICMP icmp = new ICMP(payload3);
+                icmp.Informations();
             }
             else{
                 //Pas besoin de 4eme couche
