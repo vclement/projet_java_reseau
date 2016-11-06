@@ -3,8 +3,8 @@
 
 \section{Introduction}
 
-.\input{./abstract.tex}
-
+.\input{./abstract.tex}\\
+Pour utiliser le programme, il faut donner en argument le fichier pcap a analyser (pas encore possible de choisir le protocole).
 
 \section{Présentation du fichier Pcap}
 
@@ -39,7 +39,95 @@ Les réseaux sont construit autour du modèle OSI, lui-même divisé en 7 couche
 Pour ce projet, j'ai créé un objet par couche. Les informations contenu dans l'objet "Header Pcap" contiennent les données sur la première couche de ce modèle.
 Sur chaque couche, j'ai créé plusieurs méthodes permettant de récuperer les informations intéressante.
 Puis ensuite, j'ai créé plusieurs objets par protocoles. Certains protocoles comme TCP et UDP héritent de la classe "Couche4".
-        
+
+Le premier objet est le pcapheader. Il contient:
+\begin{itemize}
+    \item Le temps en sec;
+    \item Le temps original du paquet;
+    \item La taille du paquet;
+    \item La teille effective du paquet ;
+    \item Les donnée du paquet.
+\end{itemize}   
+
+Ensuite on envoie les donnée du paquet a la couche 2 du modèle OSI.
+Une méthode de l'objet determine les informations du paquet, si un protocole est detecté, on crée un objet pour ce protocole et on envoie les inforamtions du paquet à l'objet.
+Sur chaque couche du modèle OSI, on a une encapsulation des paquets. Par exemple les informations de la couche 3 sont contenus dans la charge utile de la couche2.
+Sur chaque analyse de paquet, lorsque l'on détecte une couche en plus, on crée un objet correspondant à cette couche.
+
+On descend au fur et à mesure dans les couche. Si à un moment, on trouve un protocole, dans ce cas on arrête de monter dans les couches et on affcihe les dernières informations du paquet.
+
+Pour chaque paquet, on affiche les informations couche par couche, en terminant par le protocole.
+Chaque objet a sa méhode "Informations" qui permet d'afficher les informations pertinante de la couche en cours d'analyse.
+\subsection{couche 2}
+La couche 2 est constituée:
+\begin{itemize}
+    \item Une adresse MAC Source;
+    \item Une adresse MAC Destination;
+    \item Un éventuel protocole;
+    \item Une charge utile.
+\end{itemize}      
+    \subsubsection{ARP}
+L'objet ARP étend la couche2 est constitué:
+\begin{itemize}
+    \item du hardware type;
+    \item du prototype type;
+    \item du type de requête (Request ou Reply);
+    \item de l'IP Source;
+    \item de l'IP Destination.
+\end{itemize}      
+Si les informations du header de la couche 2 n'indique pas que le protocole suivant est ARP ou IP. On arrête l'analyse.
+
+\subsection{couche 3}
+La couche 3 est constituée de toute les informations concernant IP:
+\begin{itemize}
+    \item Version;
+    \item taille;
+    \item ttl;
+    \item protocole suivant;
+    \item IP Source;
+    \item IP Destination;
+    \item une charge utile.
+\end{itemize}      
+Si le protocole de couche 3 est différents d'IPv4, on abandonne l'analyse.
+Si on détecte ICMP, TCP, UDP, on continue l'analyse et on créé l'objet correspondant.
+
+\subsection{couche 4}
+La couche 4 est constituée:
+\begin{itemize}
+    \item Port Source;
+    \item Port Destination;
+    \item protocole;
+    \item charge utile.
+\end{itemize}      
+En fonction du protocole, on créé les objets suivants:
+    \subsubsection{ICMP}
+L'objet ICMP est constitué:
+\begin{itemize}
+    \item type;
+    \item code;
+    \item checksum;
+\end{itemize}      
+En fonction du code, on determine la requete ICMP qui est effectué (Request ou reply ou ttl exceed, ou destination unreacheable).
+
+    \subsubsection{TCP}
+L'objet TCP étends l'objet Couche4, il est constitué:
+\begin{itemize}
+    \item port Source;
+    \item port Destination;
+    \item taille;
+    \item flags;
+    \item charge utile;
+\end{itemize}      
+En fonction du flag on peut determiner à quel niveau du "handshake TCP" on est : SYN, SYN-ACK, ACK, Fin, Fin-ACK.
+
+    \subsubsection{UDP}
+L'objet UDP étends l'objet Couche 4, il est constitué:
+\begin{itemize}
+    \item Port Source;
+    \item Port Destination;
+    \item taille
+\end{itemize}   
+
 
 %%inclusion d'une mage dans le document
 %\begin{figure}[!h]
