@@ -28,13 +28,17 @@ Dans ce fichier, chaque paquet est composé de deux choses:
 Le header donne les informations de base du paquet.
 Les données correspondent au paquet réseau. 
 Pour commencer, j'ai créé un objet pour rassembler les informations contenu dans le pcap header, et un second objet qui correspond au donnée.
+Ensuite dans chaque objet, il existe un attribut qui a pour type un tableau d'octets et qui contient les informations du fichier pcap.
+Ensuite une methode permet d'extraire les octets qui nous intéresse pour les analyser.
+Par exemple, on peut utliser cette méthode pour extraire les 4 premiers octets et vérifier que ces octets sont égaux à "d4c3b2a1".
 
 
 \section{Les différents objets du projet}
 
 Les réseaux sont construit autour du modèle OSI, lui-même divisé en 7 couches.
 Pour ce projet, j'ai créé un objet par couche. Les informations contenu dans l'objet "Header Pcap" contiennent les données sur la première couche de ce modèle.
-
+Sur chaque couche, j'ai créé plusieurs méthodes permettant de récuperer les informations intéressante.
+Puis ensuite, j'ai créé plusieurs objets par protocoles. Certains protocoles comme TCP et UDP héritent de la classe "Couche4".
         
 
 %%inclusion d'une mage dans le document
