@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.11.6)  6 NOV 2016 17:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.11.6)  6 NOV 2016 19:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -689,8 +689,7 @@ Package caption Info: hyperref package is loaded.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-0.def
 File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
-)
-No file main.aux.
+) (./main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 49.
@@ -710,6 +709,7 @@ LaTeX Font Info:    ... okay on input line 49.
 LaTeX Info: Redefining \degres on input line 49.
 LaTeX Info: Redefining \dots on input line 49.
 LaTeX Info: Redefining \up on input line 49.
+
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucsencs.def
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 )
@@ -756,6 +756,8 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 49.
 LaTeX Info: Redefining \pageref on input line 49.
 LaTeX Info: Redefining \nameref on input line 49.
+
+(./main.out) (./main.out)
 \@outlinefile=\write4
 \openout4 = `main.out'.
 
@@ -797,377 +799,71 @@ LaTeX Info: Redefining \nameref on input line 49.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: End \AtBeginDocument code.
-(./title.tex <./logo.jpg, id=7, 569.12625pt x 352.31625pt>
-File: ./logo.jpg Graphic file (type jpg)
- <use ./logo.jpg>
-Package pdftex.def Info: ./logo.jpg used on input line 5.
-(pdftex.def)             Requested size: 169.29684pt x 104.80328pt.
+(./title.tex <./ESIEA_2014_logo.png, id=23, 473.77pt x 209.78375pt>
+File: ./ESIEA_2014_logo.png Graphic file (type png)
 
-[1
+<use ./ESIEA_2014_logo.png>
+Package pdftex.def Info: ./ESIEA_2014_logo.png used on input line 5.
+(pdftex.def)             Requested size: 169.29684pt x 74.9619pt.
+ [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./logo.jpg>])pdfTeX warnin
-g (ext4): destination with the same identifier (name{page.1}) has been already 
-used, duplicate ignored
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./ESIEA_2014_logo.png>])pd
+fTeX warning (ext4): destination with the same identifier (name{page.1}) has be
+en already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.62 \newpage
-              [1] (./abstract.texpdfTeX warning (ext4): destination with the sa
-me identifier (name{page.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.12 \end{abstract}
-                    [1])
+              [1] (./main.toc)
 \tf@toc=\write5
 \openout5 = `main.toc'.
 
  [0
 
-]pdfTeX warning (ext4): destination with the same identifier (name{page.0}) has
+] (./presentation.tex
+Chapitre 1.
+(./abstract.tex) <./globalHeader.png, id=49, 778.91pt x 39.14626pt>
+File: ./globalHeader.png Graphic file (type png)
+
+<use ./globalHeader.png>
+Package pdftex.def Info: ./globalHeader.png used on input line 19.
+(pdftex.def)             Requested size: 426.79134pt x 21.44926pt.
+)pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.82 \newpage
-              [0] (./presentation.tex
-Chapitre 1.
-
-Underfull \hbox (badness 10000) in paragraph at lines 3--5
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 8--9
-
- []
-
-<presentation/schema.png, id=36, 799.06076pt x 431.6125pt>
-File: presentation/schema.png Graphic file (type png)
-
-<use presentation/schema.png>
-Package pdftex.def Info: presentation/schema.png used on input line 15.
-(pdftex.def)             Requested size: 426.79134pt x 230.5383pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 27--29
-
- []
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.32 \newpage
+l.87 \newpage
               [1
 
- <./presentation/schema.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 45--46
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 55--56
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 60--61
-
- []
-
-
-LaTeX Warning: Citation `cite6' on page 2 undefined on input line 63.
-
-) (./existant.tex [2]
-Chapitre 2.
-
-Underfull \hbox (badness 10000) in paragraph at lines 15--16
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 21--22
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 27--28
-
- []
-
-
-LaTeX Warning: Citation `cite0' on page 3 undefined on input line 36.
-
-
-LaTeX Warning: Citation `cite1' on page 3 undefined on input line 37.
-
-
-LaTeX Warning: Citation `cite2' on page 3 undefined on input line 38.
-
-
-LaTeX Warning: Citation `cite3' on page 3 undefined on input line 39.
-
-
-LaTeX Warning: Citation `cite4' on page 3 undefined on input line 40.
-
-) (./besoins.tex [3
-
-]
-Chapitre 3.
-[4
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 25--26
-
- []
-
-<besoins/rendu.png, id=79, 375.65344pt x 456.95718pt>
-File: besoins/rendu.png Graphic file (type png)
- <use besoins/rendu.png>
-Package pdftex.def Info: besoins/rendu.png used on input line 31.
-(pdftex.def)             Requested size: 233.91154pt x 284.52756pt.
-
-[5 <./besoins/rendu.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 48--49
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 74--75
-
- []
-
-) (./autre_partie.tex [6]
-Chapitre 4.
-<autre_partie/image1.jpg, id=97, 475.02469pt x 399.74344pt>
-File: autre_partie/image1.jpg Graphic file (type jpg)
-
-<use autre_partie/image1.jpg>
-Package pdftex.def Info: autre_partie/image1.jpg used on input line 13.
-(pdftex.def)             Requested size: 405.75166pt x 341.43306pt.
-
-
-LaTeX Warning: Citation `cite4' on page 7 undefined on input line 21.
-
-[7
-
- <./autre_partie/image1.jpg>]
-<autre_partie/image2.jpg, id=111, 475.02469pt x 399.74344pt>
-File: autre_partie/image2.jpg Graphic file (type jpg)
-
-<use autre_partie/image2.jpg>
-Package pdftex.def Info: autre_partie/image2.jpg used on input line 29.
-(pdftex.def)             Requested size: 405.75166pt x 341.43306pt.
-
-
-LaTeX Warning: Citation `cite6' on page 8 undefined on input line 38.
-
-[8 <./autre_partie/image2.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 58--60
-
- []
-
-<autre_partie/image3.jpg, id=122, 475.02469pt x 399.74344pt>
-File: autre_partie/image3.jpg Graphic file (type jpg)
-
-<use autre_partie/image3.jpg>
-Package pdftex.def Info: autre_partie/image3.jpg used on input line 63.
-(pdftex.def)             Requested size: 202.86496pt x 170.71652pt.
-
-
-LaTeX Warning: Citation `cite0' on page 9 undefined on input line 70.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 73--75
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 82--84
-
- []
-
-<autre_partie/image4.jpg, id=125, 475.02469pt x 399.74344pt>
-File: autre_partie/image4.jpg Graphic file (type jpg)
-
-<use autre_partie/image4.jpg>
-Package pdftex.def Info: autre_partie/image4.jpg used on input line 89.
-(pdftex.def)             Requested size: 338.12517pt x 284.52756pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 95--97
-
- []
-
-[9 <./autre_partie/image3.jpg> <./autre_partie/image4.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 98--99
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 103--105
-
- []
-
-) (./resultats.tex [10]
-Chapitre 5.
-[11
-
-] <resultats/gallerie.jpg, id=169, 184.43906pt x 296.60812pt>
-File: resultats/gallerie.jpg Graphic file (type jpg)
-
-<use resultats/gallerie.jpg>
-Package pdftex.def Info: resultats/gallerie.jpg used on input line 44.
-(pdftex.def)             Requested size: 147.55144pt x 237.2868pt.
-File: resultats/gallerie.jpg Graphic file (type jpg)
- <use resultats/gallerie.jpg>
-Package pdftex.def Info: resultats/gallerie.jpg used on input line 46.
-(pdftex.def)             Requested size: 147.55144pt x 237.2868pt.
-File: resultats/gallerie.jpg Graphic file (type jpg)
-
-<use resultats/gallerie.jpg>
-Package pdftex.def Info: resultats/gallerie.jpg used on input line 48.
-(pdftex.def)             Requested size: 147.55144pt x 237.2868pt.
-File: resultats/gallerie.jpg Graphic file (type jpg)
- <use resultats/gallerie.jpg>
-Package pdftex.def Info: resultats/gallerie.jpg used on input line 50.
-(pdftex.def)             Requested size: 147.55144pt x 237.2868pt.
-File: resultats/gallerie.jpg Graphic file (type jpg)
-
-<use resultats/gallerie.jpg>
-Package pdftex.def Info: resultats/gallerie.jpg used on input line 52.
-(pdftex.def)             Requested size: 147.55144pt x 237.2868pt.
-) (./bilan.tex [12 <./resultats/gallerie.jpg>]
-Chapitre 6.
-
-Underfull \hbox (badness 10000) in paragraph at lines 15--16
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 17--18
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 22--23
-
- []
-
-[13
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 33--34
-
- []
-
-) (./annexes.tex [14] [15
-
-] (./annexe1.tex) (./annexe2.tex [16
-
-]pdfTeX warning (ext4): destination with the same identifier (name{section.6.1}
-) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.23 \section{Partie 1}
-                       pdfTeX warning (ext4): destination with the same identif
-ier (name{subsection.6.1.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.27 \subsection{Sous-parie 1}
-                              pdfTeX warning (ext4): destination with the same 
-identifier (name{subsection.6.1.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.31 \subsection{Sous-parie 2}
-                              pdfTeX warning (ext4): destination with the same 
-identifier (name{section.6.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.35 \section{Partie 2}
-                        [17
-
-]
-File: presentation/schema.png Graphic file (type png)
- <use presentation/schema.png>
-Package pdftex.def Info: presentation/schema.png used on input line 53.
-(pdftex.def)             Requested size: 421.40306pt x 227.62204pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 59--61
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 65--67
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 71--73
-
- []
-
-)) [18]
-No file main.bbl.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 109.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 109.
-(./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 109.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 109.
-
-
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  23AF5A0DDAD8402E9541755404DE24EE;3628.
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 109.
+ <./globalHeader.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 98.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 98.
+ (./main.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 98.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 98.
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: DA99337720A0EBB525082EB9E690AB3D;275.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 98.
  ) 
 Here is how much of TeX's memory you used:
- 19915 strings out of 494991
- 359906 string characters out of 6180055
- 445425 words of memory out of 5000000
- 22643 multiletter control sequences out of 15000+600000
- 18874 words of font info for 36 fonts, out of 8000000 for 9000
+ 19728 strings out of 494991
+ 357278 string characters out of 6180055
+ 439502 words of memory out of 5000000
+ 22593 multiletter control sequences out of 15000+600000
+ 14418 words of font info for 30 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 62i,10n,96p,2100b,517s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{Hfootnote.5} has been referenced but does not exi
-st, replaced by a fixed one
-
-pdfTeX warning (dest): name{Hfootnote.4} has been referenced but does not exist
-, replaced by a fixed one
-
-pdfTeX warning (dest): name{Hfootnote.3} has been referenced but does not exist
-, replaced by a fixed one
-
-pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist
-, replaced by a fixed one
-
-pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
-, replaced by a fixed one
-
- </home/vincet/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk> </home/vi
-ncet/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx0800.600pk> </home/vincet/.texm
-f-var/fonts/pk/ljfour/jknappen/ec/ecti0800.600pk> </home/vincet/.texmf-var/font
-s/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/vincet/.texmf-var/fonts/pk/ljfou
-r/jknappen/ec/ecbx1000.600pk> </home/vincet/.texmf-var/fonts/pk/ljfour/jknappen
-/ec/ecrm0800.600pk> </home/vincet/.texmf-var/fonts/pk/ljfour/jknappen/ec/eccc10
-00.600pk> </home/vincet/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0700.600pk> 
-</home/vincet/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488.600pk> </home/vin
-cet/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/vincet/.texmf
--var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/vincet/.texmf-var/fonts
-/pk/ljfour/jknappen/ec/eccc1200.600pk> </home/vincet/.texmf-var/fonts/pk/ljfour
-/jknappen/ec/ecrm1200.600pk> </home/vincet/.texmf-var/fonts/pk/ljfour/jknappen/
-ec/ecti1200.600pk> </home/vincet/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx207
-4.600pk> </home/vincet/.texmf-var/fonts/pk/ljfour/jknappen/ec/eccc1728.600pk>
-Output written on main.pdf (23 pages, 281737 bytes).
+ 62i,7n,96p,430b,517s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/vincet/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/
+vincet/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/vincet/.te
+xmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/vincet/.texmf-var/fo
+nts/pk/ljfour/jknappen/ec/ecbx2488.600pk> </home/vincet/.texmf-var/fonts/pk/ljf
+our/jknappen/ec/eccc1200.600pk> </home/vincet/.texmf-var/fonts/pk/ljfour/jknapp
+en/ec/ecrm1200.600pk> </home/vincet/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecti
+1200.600pk> </home/vincet/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk
+> </home/vincet/.texmf-var/fonts/pk/ljfour/jknappen/ec/eccc1728.600pk>
+Output written on main.pdf (4 pages, 103053 bytes).
 PDF statistics:
- 668 PDF objects out of 1000 (max. 8388607)
- 263 compressed objects within 3 object streams
- 112 named destinations out of 1000 (max. 500000)
- 53 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 265 PDF objects out of 1000 (max. 8388607)
+ 80 compressed objects within 1 object stream
+ 9 named destinations out of 1000 (max. 500000)
+ 55 words of extra memory for PDF output out of 10000 (max. 10000000)
 

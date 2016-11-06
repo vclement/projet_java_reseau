@@ -1,66 +1,96 @@
 \chapter{Présentation du projet}
 
-Intro\footnotemark\\
-%note en bas de page
 
-\section{Sujet}
+\section{Introduction}
 
-Bla(cf. fig. 1.1)\\
+.\input{./abstract.tex}
 
-%inclusion d'une mage dans le document
+
+\section{Présentation du fichier Pcap}
+
+La première chose a effectué lors de l'ouverture du fichier pcap, est l'extraction du "Global Header" du fichier.
+Il contient plusieurs informations essentielles à la compréhension du fichier, notamment l'encodage des informations binaire.
+Si Les informations sont codés selon la norme "Big-Endian" dans ce cas, on accepte d'ouvrir le fichier, sinon on le rejette.
+Pour la norme Little-Endian il faut inverser chaque octet.
+
+La figure ci-dessous montre comment est composé le fichier pcap.
 \begin{figure}[!h]
-\begin{center}
-%taille de l'image en largeur
-%remplacer "width" par "height" pour régler la hauteur
-\includegraphics[width=15cm]{presentation/schema}
-\end{center}
-%légende de l'image
-\caption{Schéma descriptif}
+    \begin{center}
+\includegraphics[width=15cm]{./globalHeader.png}
+    \end{center}
 \end{figure}
 
-%Contenu de la note précédemment marquée avec \footnotemark
-\footnotetext{Note bas de page "intro"}
-
-Bla
-%retour à la ligne (alinea)
-
-Bla\\
-%saut de paragraphe
-
-Bla
-
-\newpage
-
-\section{Problématique soulevée}
-
-Bla
-
-\begin{center}
-Problématique du sujet
-\end{center}
-
-\section{Hypothèse de solution}
-
-%Quoi :
-Bla\\
-
-Voici une liste :
+Dans ce fichier, chaque paquet est composé de deux choses:
 \begin{itemize}
-\item item 1;
-\item item 2;
-\item item 3;
-\item item 4.
-\end{itemize}
+    \item Un Header Pcap;
+    \item Un Packet Data.
+\end{itemize}       
+Le header donne les informations de base du paquet.
+Les données correspondent au paquet réseau. 
+Pour commencer, j'ai créé un objet pour rassembler les informations contenu dans le pcap header, et un second objet qui correspond au donnée.
 
-Bla\\
 
-%Comment :
-Bla
+\section{Les différents objets du projet}
 
-Bla\footnotemark\\
+Les réseaux sont construit autour du modèle OSI, lui-même divisé en 7 couches.
+Pour ce projet, j'ai créé un objet par couche. Les informations contenu dans l'objet "Header Pcap" contiennent les données sur la première couche de ce modèle.
 
-%Detail :
-Bla(cf. ref. \cite{cite6}).
-%citation référencé dans le document "bibliographie.bib" inclus à la fin du document
+        
 
-\footnotetext{Note bas de page "bla"}
+%%inclusion d'une mage dans le document
+%\begin{figure}[!h]
+%\begin{center}
+%%taille de l'image en largeur
+%%remplacer "width" par "height" pour régler la hauteur
+%\includegraphics[width=15cm]{presentation/schema}
+%\end{center}
+%%légende de l'image
+%\caption{Schéma descriptif}
+%\end{figure}
+%
+%%Contenu de la note précédemment marquée avec \footnotemark
+%\footnotetext{Note bas de page "intro"}
+%
+%Bla
+%%retour à la ligne (alinea)
+%
+%Bla\\
+%%saut de paragraphe
+%
+%Bla
+%
+%\newpage
+%
+%\section{Problématique soulevée}
+%
+%Bla
+%
+%\begin{center}
+%Problématique du sujet
+%\end{center}
+%
+%\section{Hypothèse de solution}
+%
+%%Quoi :
+%Bla\\
+%
+%Voici une liste :
+%\begin{itemize}
+%\item item 1;
+%\item item 2;
+%\item item 3;
+%\item item 4.
+%\end{itemize}
+%
+%Bla\\
+%
+%%Comment :
+%Bla
+%
+%Bla\footnotemark\\
+%
+%%Detail :
+%Bla(cf. ref. \cite{cite6}).
+%%citation référencé dans le document "bibliographie.bib" inclus à la fin du document
+%
+%\footnotetext{Note bas de page "bla"}
