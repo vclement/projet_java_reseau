@@ -33,7 +33,6 @@ public class Couche2 {
 
         if( protocoleSup().equals( "IPv4" ) ){
             System.out.println("IP");
-            System.out.println("Analyse de la couche 3");
             //On cree une couche supplémentaire et on lui envoie la payload du niveau 2 :-)
             Couche3 couche3 = new Couche3(payload, payload.length);
             couche3.Informations();

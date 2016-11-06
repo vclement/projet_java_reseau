@@ -10,7 +10,7 @@ public class Couche3{
     private byte protocole;
     private byte[] ipSource;
     private byte[] ipDest;
-    private byte[] payload3;
+    private byte[] payload;
 
     public Couche3(byte[] payload2, int taille){
         this.version = data(payload2, 0, 1)[0] == (byte)0x45 ? 1 : 0;
@@ -19,30 +19,35 @@ public class Couche3{
         this.protocole = data(payload2, 9, 1)[0];
         this.ipSource = data(payload2, 12, 4);
         this.ipDest = data(payload2, 14, 4);
-        this.payload3 = data(payload2,20, taille-20);
+        this.payload = data(payload2,20, taille-20);
     } 
 
     public void Informations(){
         System.out.println("\n--> Couche3:");
+
         if(version==1){
             System.out.println("\tVersion: IPv4") ;
-            System.out.println("\tTotal length: "+ HexaToInt(length) );
+            System.out.println("\tTaille totale: "+ HexaToInt(length) );
             System.out.println("\tTime to live: "+ Integer.parseInt( (String.format("%02X",ttl) ), 16 ) );
             System.out.println("\tSource: "+AdresseIP(ipSource));
             System.out.println("\tDestination: "+AdresseIP(ipDest));
+
             if(protocole == (byte)0x06 ){
                 //On cree une couche 4
                 System.out.println("\tProtocole niveau 4 : TCP ");
-
+                Couche4 couche4 = new Couche4(payload, payload.length, 1);
+                couche4.Informations();
             }
             else if(protocole == (byte)0x11){
                 //On cree une couche 4
                 System.out.println("\tProtocole niveau 4 : UDP");
+                Couche4 couche4 = new Couche4(payload, payload.length, 0);
+                couche4.Informations();
             }
             else if(protocole == (byte)0x01){
                 //On cree un pbjet spécifique a ICMP !
                 System.out.println("\tProtocole suivant: ICMP");
-                ICMP icmp = new ICMP(payload3);
+                ICMP icmp = new ICMP(payload);
                 icmp.Informations();
             }
             else{
@@ -50,6 +55,7 @@ public class Couche3{
                 System.out.println("\tPas de protocole de niveau 4 detecté!");
             }
         }
+
         else
             System.out.println("\tProtocole de niveau 3 non implémenté !");
     }

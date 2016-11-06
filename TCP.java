@@ -2,44 +2,31 @@ import java.io.*;
 import java.nio.*;
 import java.util.*;
 
-public class ICMP{
+public class TCP extends Couche4{
     
-    private byte type;
-    private byte code;
-    private byte[] checksum;
+    private byte[] payload;
+    private byte[] portSource;
+    private byte[] portDest;
+    private int length;
+    private byte[] flags;
 
-    public ICMP(byte[] donnee){
-        this.type = data(donnee, 0, 1)[0] ;
-        this.code = data(donnee, 1, 1)[0] ;
-        this.checksum = data(donnee, 2, 2);
+    public TCP(byte[] donnee, byte[] portSource, byte[] portDest){
+        super();
+        this.portSource = portSource;
+        this.portDest = portDest;
+        this.payload = donnee;
+        this.length = donnee.length -32;
+        this.flags = data(donnee, 13, 1);
     }
 
     public void Informations(){
-        System.out.println("\n-->ICMP:");
+        System.out.println("\n-->TCP:");
         
-        //En fonction du code, on affiche la requete ICMP
-        System.out.print("\tType: "+ Integer.parseInt(String.format("%02X", type), 16) +"  ");
+        System.out.println("\tPort Source: " + HexaToInt(portSource));
 
-        if(code == (byte)0x08)
-            System.out.println("(Echo (ping) Request)");
-        else if( code == (byte)0x00 )
-            System.out.println("(Echo (ping) Reply)");
-        else if( code == (byte)0x11 )
-            System.out.println("(Time-To-Live Exceeded)");
-        else if( code == (byte)0x03 )
-            System.out.println("(Destination unreacheable)");
-        else
-            System.out.println("(Code non implémenté)");
-        
-        System.out.println("\tCode: "+ Integer.parseInt(String.format("%02X", code), 16));
-        System.out.println("\tChecksum: " + String.format("0x%02x%02x", checksum[0], checksum[1]));
-        System.out.println("\tFin du paquet.");
-    }
+        System.out.println("\tPort Destination: "+ HexaToInt(portDest));
+        System.out.println("\tTaille: " + length);
+        System.out.println("\tFlags: 0x0"+ String.format("%02x", flags[0]));
 
-    public byte[] data(byte[] donnee, int offset, int length){
-        byte tab[] = new byte[length];
-        for(int i=0; i < length; i++)
-            tab[i] = donnee[offset+i];
-        return tab;
     }
 }
