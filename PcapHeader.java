@@ -3,6 +3,7 @@ import java.nio.*;
 import java.util.*;
 
 public class PcapHeader{
+  
     private byte[] ts_sec;
     private byte[] ts_usec;
     private byte[] incl_len;
@@ -42,23 +43,6 @@ public class PcapHeader{
         String date = ""+valeurByteEnInt(ts_sec);
         Date expiry = new Date(Long.parseLong(date)*1000);
         return expiry;
-    //    int year = 1970;
-    //    int month = 01 ; 
-    //    int day = 01;
-    //    int hours = 0;
-    //    int minutes = 0;
-    //    int sec = 0;
-    //    int temp = valeurByteEnInt(ts_sec);
-    //    String infos ="";
-    //    year += temp / 31557600; 
-    //    month = ((temp / 2592000)+6) % 12;
-    //    day = (temp / 86400) % 30;
-    //    hours = (temp / 3600) % 24;
-    //    minutes = (temp % 3600)/60;
-    //    sec = temp % 60; 
-
-    //    infos +="le "+day+"/"+ month +"/"+ year + " "+"à "+ hours +":"+minutes+":"+sec +" (valeur UTC+00)";
-
     }
 
     public byte[] extractInfo(byte[] donnee, int offset, int length){

@@ -11,7 +11,7 @@ class WireShark {
         byte[] donnee = Files.readAllBytes(Paths.get(args[0]));
         int offset=0, next_offset = 0, i=0, verif_i=0;
 
-
+        //Ici on récupère quelques informations basique sur le fichier pcap.
         byte[] magicnumber = data(donnee,offset, offset+24);
         System.out.println("\nPremière information sur le paquet:");
         System.out.print("Magic Number: ");
@@ -39,7 +39,6 @@ class WireShark {
             pcapheader.Informations();
 
             i = taillePacketInt( pcapheader.getIncl_len() );
-            //verif_i = packetHeader[12] + packetHeader[13] + packetHeader[14] + packetHeader[15];  
             verif_i = taillePacketInt( pcapheader.getOrig_len() );
             
             //Next offset

@@ -23,24 +23,25 @@ public class Couche2 {
     
     public void Informations(){
         System.out.println("--> Couche 2:");
-        System.out.print("Adresse de destination = ");
+        System.out.print("\tAdresse de destination = ");
         System.out.println(AdresseHexa(macDest));
 
-        System.out.print("Adresse Source = ");
+        System.out.print("\tAdresse Source = ");
         System.out.println(AdresseHexa(macSource));
 
-        System.out.print("Protocole suivant: ");
+        System.out.print("\tProtocole suivant: ");
 
         if( protocoleSup().equals( "IPv4" ) ){
-            System.out.println("IPv4");
-            System.out.println("Il existe un paquet de niveau 3:");
+            System.out.println("Protocole de niveau 3 detecté");
             //On cree une couche supplémentaire et on lui envoie la payload du niveau 2 :-)
+            Couche3 couche3 = new Couche3(payload);
+            couche3.Informations();
         }
         else if( protocoleSup().equals( "ARP" ) ){
             System.out.println("ARP");
-            System.out.println("Pas de niveau 3! Analyse du protocole:");
+            System.out.println("\tPas de niveau 3! Analyse du protocole:");
             //On analyse l'ARP.
-            ARP arp = new ARP(this.payload);
+            ARP arp = new ARP(payload);
             arp.Informations();
         }
         

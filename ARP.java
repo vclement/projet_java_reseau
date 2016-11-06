@@ -20,29 +20,29 @@ public class ARP extends Couche2{
     }
 
     public void Informations(){
-        System.out.print("Type de requête: ");
+        System.out.print("\t\tType de requête: ");
         if(code[1] == (byte)0x01 )
             System.out.println("Request");
         else if(code[1] == (byte)0x02 )
             System.out.println("Reply");
         
-        System.out.print("Sender MAC address: ");
+        System.out.print("\t\tSender MAC address: ");
         System.out.println(AdresseHexa(macSource));
 
-        System.out.print("Sender IP adresse: ");
+        System.out.print("\t\tSender IP adresse: ");
         System.out.println(AdresseIP(ipsource));
 
-        System.out.print("Target MAC address: ");
+        System.out.print("\t\tTarget MAC address: ");
         System.out.println(AdresseHexa(macDest));
 
-        System.out.print("Target IP address: ");
+        System.out.print("\t\tTarget IP address: ");
         System.out.println(AdresseIP(ipdest));
             
         if(code[1] == (byte)0x01 ){
-            System.out.println("Info: Who has "+AdresseIP(ipdest)+"?  Tell "+ AdresseIP(ipsource));
+            System.out.println("\t\tInfo: Who has "+AdresseIP(ipdest)+"?  Tell "+ AdresseIP(ipsource));
         }
         else if(code[1] == (byte)0x02 ){
-            System.out.println("Info: "+AdresseIP(ipsource)+" is at "+AdresseHexa(macSource));
+            System.out.println("\t\tInfo: "+AdresseIP(ipsource)+" is at "+AdresseHexa(macSource));
         }
     }
 
