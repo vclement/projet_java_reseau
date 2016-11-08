@@ -29,7 +29,6 @@ public class Couche4{
             //Dans ce cas, on a un paquet UDP
             UDP udp = new UDP(payload, portSource, portDest);
             udp.Informations();
-            
         }
     }
 

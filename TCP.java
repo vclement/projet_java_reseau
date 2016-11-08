@@ -26,7 +26,27 @@ public class TCP extends Couche4{
 
         System.out.println("\tPort Destination: "+ HexaToInt(portDest));
         System.out.println("\tTaille: " + length);
-        System.out.println("\tFlags: 0x0"+ String.format("%02x", flags[0]));
+        System.out.print("\tFlags: 0x0"+ String.format("%02x", flags[0]));
+        
+        String flag = "0x0"+String.format("%02x", flags[0]);
+        //Maintenant on indique l'etat de la connexion (SYN, SYN-ACK, ACK, FIN, FIN-ACK)
+        if(flag.equals("0x002"))
+            System.out.println(" (SYN)");
+        else if(flag.equals("0x012"))
+            System.out.println(" (SYN-ACK)");
+        else if(flag.equals("0x010"))
+            System.out.println(" (ACK)");
+        else if(flag.equals("0x011"))
+            System.out.println(" (FIN-ACK)");
+        else if(flag.equals("0x001"))
+            System.out.println(" (FIN)");
+        else if(flag.equals("0x018")) 
+            System.out.println(" (PSH,ACK)");
+        else
+            System.out.println("");
 
+        if(length>0){
+            System.out.println("Charge utile non nul, exitance d'un protocol supérieur");
+        }
     }
 }

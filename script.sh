@@ -1,1 +1,1 @@
-rm *.class
+rm *.class && javac WireShark.java

@@ -7,8 +7,18 @@ import java.util.ListIterator;
 
 
 class WireShark {
+
+    public static byte[]donnee;
+
     public static void main( String[] args) throws IOException {
-        byte[] donnee = Files.readAllBytes(Paths.get(args[0]));
+       
+        try{
+            donnee = Files.readAllBytes(Paths.get(args[0]));
+        }catch(Exception oe){
+            System.out.println("File Not Found !");
+            System.exit(0);
+        }
+
         int offset=0, next_offset = 0, i=0, verif_i=0;
 
         //Ici on récupère quelques informations basique sur le fichier pcap.
@@ -20,7 +30,7 @@ class WireShark {
             System.out.println("Big-Endian: OK !");
         else{
             System.out.println("Fichier illisible, fin du programme");
-            System.exit(1);
+            System.exit(0);
         }
 
         if(magicnumber[20] == (byte)0x01)
@@ -32,7 +42,8 @@ class WireShark {
 
         offset=24;
         System.out.println( "\nDébut de l'analyse de l'ensemble des paquets...\n" );
-        
+
+
         while(offset < donnee.length){
             //On commence par recuperer le header generer par WireShark. Et on le stock dans un objet de type Header Pcap.
             PcapHeader pcapheader = new PcapHeader(data(donnee, offset, 16));
@@ -40,7 +51,7 @@ class WireShark {
 
             i = taillePacketInt( pcapheader.getIncl_len() );
             verif_i = taillePacketInt( pcapheader.getOrig_len() );
-            
+
             //Next offset
             next_offset = i;
             offset += 16;

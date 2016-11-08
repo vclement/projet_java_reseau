@@ -25,6 +25,11 @@ public class UDP extends Couche4{
         System.out.println("\tPort Destination: "+ HexaToInt(portDest));
 
         System.out.println("\tTaille: " + HexaToInt(length));
-
+        
+        if(HexaToInt(portSource) == 53 || HexaToInt(portDest) == 53)
+            System.out.println("Next Protocol is DNS");
+        else if(HexaToInt(portSource) == 68 || HexaToInt(portSource) == 67)
+            System.out.println("Next Protocol is DHCP");
+        
     }
 }
