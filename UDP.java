@@ -13,8 +13,8 @@ public class UDP extends Couche4{
         super();
         this.portSource = portSource;
         this.portDest = portDest;
-        this.payload = donnee;
         this.length = data(donnee, 4,2);
+        this.payload = donnee;
     }
 
     public void Informations(){
@@ -26,10 +26,14 @@ public class UDP extends Couche4{
 
         System.out.println("\tTaille: " + HexaToInt(length));
         
-        if(HexaToInt(portSource) == 53 || HexaToInt(portDest) == 53)
-            System.out.println("Next Protocol is DNS");
-        else if(HexaToInt(portSource) == 68 || HexaToInt(portSource) == 67)
-            System.out.println("Next Protocol is DHCP");
-        
+        if(HexaToInt(portSource) == 53 || HexaToInt(portDest) == 53){
+            //System.out.println("Next Protocol is DNS");
+            DNS dns = new DNS(payload, portSource, portDest) ;
+            dns.Informations();
+        }
+        else if(HexaToInt(portSource) == 68 || HexaToInt(portSource) == 67){
+            DHCP dhcp = new DHCP(payload, portSource, portDest);
+            dhcp.Informations();
+        }
     }
 }

@@ -44,7 +44,8 @@ public class Couche2 {
             ARP arp = new ARP(payload);
             arp.Informations();
         }
-        
+        else
+            System.out.println("protocole inconnu");
         
     }
 

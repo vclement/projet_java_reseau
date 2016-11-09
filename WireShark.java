@@ -20,7 +20,7 @@ class WireShark {
         }
 
         int offset=0, next_offset = 0, i=0, verif_i=0;
-        int numero =0;
+        int numero =1;
         //Ici on récupère quelques informations basique sur le fichier pcap.
         byte[] magicnumber = data(donnee,offset, offset+24);
         System.out.println("\nPremière information sur le paquet:");
